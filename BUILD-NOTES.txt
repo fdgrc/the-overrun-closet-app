@@ -1,0 +1,5 @@
+Production URL: https://blissful-kate.pages.dev
+Package: com.blissfulkate.overruncloset
+App name: The Overrun Closet
+Capacitor: 8.5.1
+Java: 21

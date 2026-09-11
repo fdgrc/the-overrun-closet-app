@@ -1,0 +1,22 @@
+{
+  "name": "the-overrun-closet-android",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Android Capacitor wrapper for The Overrun Closet by Blissful Kate",
+  "scripts": {
+    "android:add": "cap add android",
+    "sync": "cap sync android",
+    "assets": "capacitor-assets generate --android --iconBackgroundColor '#fff7fb' --iconBackgroundColorDark '#24191f' --splashBackgroundColor '#fff7fb' --splashBackgroundColorDark '#171216'",
+    "android:debug": "cd android && ./gradlew assembleDebug",
+    "android:release": "cd android && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.5.1",
+    "@capacitor/core": "8.5.1"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "3.0.5",
+    "@capacitor/cli": "8.5.1",
+    "typescript": "^5.9.2"
+  }
+}
