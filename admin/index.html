@@ -1,0 +1,1339 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Overrun Closet by Blissful Kate — Owner</title><style>
+:root{--pink:#ee2f8f;--ink:#23171e;--muted:#756b71;--line:#eadde4;--bg:#fff9fc}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}.wrap{width:min(1100px,calc(100% - 28px));margin:auto}.top{position:sticky;top:0;z-index:20;background:#fff9fcee;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.top .wrap{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 0}.brand{font:italic 700 25px Georgia,serif;color:var(--pink)}.btn{border:0;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer}.primary{background:var(--pink);color:white}.dark{background:#23171e;color:white}.light{background:white;border:1px solid var(--line)}main{padding:28px 0 60px}.card{background:white;border:1px solid var(--line);border-radius:22px;padding:20px;margin-bottom:18px}.login{max-width:450px;margin:60px auto}h1,h2{font-family:Georgia,serif;margin-top:0}p,.help{color:var(--muted);line-height:1.5}.help{font-size:12px}label{display:block;font-size:12px;font-weight:900;margin:12px 0 6px}input[type=text],input[type=password],input[type=url],textarea,select{width:100%;border:1px solid #dbcdd4;border-radius:12px;padding:12px;background:#fff}textarea{min-height:110px;resize:vertical}.checkrow{display:flex;align-items:center;gap:9px;margin-top:12px}.checkrow input{width:auto}.preview{position:relative;overflow:hidden;background:#eee;border-radius:18px;touch-action:none}.preview.hero{aspect-ratio:16/10;max-width:760px}.preview.square{aspect-ratio:1}.preview.wide{aspect-ratio:2/1}.preview.tall{aspect-ratio:1/2}.preview img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;user-select:none}.urlrow{display:flex;gap:8px;margin:10px 0}.urlrow input{flex:1}.slider{display:grid;grid-template-columns:50px 1fr 52px;gap:8px;align-items:center;margin-top:12px;font-size:12px;font-weight:800}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.item{border:1px solid var(--line);border-radius:17px;padding:9px;background:white}.item.hidden{opacity:.45}.mini{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.mini button{font-size:11px;border:1px solid var(--line);background:white;border-radius:999px;padding:6px 8px}.dialog{position:fixed;inset:0;background:#160e14bb;z-index:50;display:none;place-items:center;padding:14px}.dialog.open{display:grid}.box{background:white;width:min(700px,100%);max-height:94vh;overflow:auto;border-radius:22px;padding:18px}.right{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.status{font-size:13px;font-weight:800;min-height:20px}.bad{color:#a3264b}.good{color:#16834b}@media(max-width:720px){.gallery{grid-template-columns:repeat(2,1fr)}.urlrow{display:block}.urlrow button{margin-top:7px}}
+
+.save-toast{position:fixed;right:18px;bottom:18px;z-index:80;width:min(360px,calc(100vw - 36px));background:#23171e;color:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 18px 48px rgba(35,23,30,.28);display:none}.save-toast.show{display:block}.save-toast strong{display:block;margin-bottom:4px}.save-toast .msg{font-size:13px;opacity:.86}.progress{height:6px;background:#ffffff2b;border-radius:999px;overflow:hidden;margin-top:10px}.progress>span{display:block;height:100%;width:0;background:#fff;border-radius:999px;transition:width .28s ease}.saving{opacity:.7;pointer-events:none}.unsaved-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ee2f8f;margin-right:6px;vertical-align:middle}.save-hint{font-size:12px;color:var(--muted);margin-top:8px}
+
+:root{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark}
+html[data-theme="dark"] body{background:#171216;color:#f7edf2}
+html[data-theme="dark"] header{background:#1c161a;border-color:#3b2e34}
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .item,
+html[data-theme="dark"] .preview{background:#241c21;border-color:#43333b;color:#f7edf2}
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select{
+  background:#1b1519!important;
+  color:#fff!important;
+  border-color:#493740!important;
+}
+html[data-theme="dark"] .help{color:#c7b7bf}
+html[data-theme="dark"] .btn.light{background:#2b2227;color:#fff;border-color:#4b3a42}
+.theme-toggle-admin{border:1px solid #e9d9e1;background:#fff;color:#251b20;border-radius:999px;height:42px;padding:0 14px;cursor:pointer;font-weight:800}
+html[data-theme="dark"] .theme-toggle-admin{background:#2b2227;color:#fff;border-color:#4b3a42}
+
+
+.env-badge{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;margin-top:5px;font:900 10px/1 system-ui,sans-serif;letter-spacing:.08em}
+.env-badge.staging{background:#fff0b8;color:#6d5200;border:1px solid #e4c451}
+.env-badge.live{background:#e7f7ee;color:#11663c;border:1px solid #a9dfc0}
+.password-wrap{position:relative}
+.password-wrap input{padding-right:78px}
+.show-password{position:absolute;right:7px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--pink);font-weight:900;font-size:12px;cursor:pointer;padding:8px;border-radius:9px}
+.show-password:hover{background:#fff0f7}
+.login-options{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:10px}
+.remember-row{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:var(--muted);cursor:pointer}
+.remember-row input{width:auto;margin:0}
+.logout-note{margin-top:10px}
+.item-status{display:inline-block;margin-top:7px;border-radius:999px;padding:4px 7px;font-size:10px;font-weight:900;background:#f4edf1}
+.item-status.reserved{background:#fff0c9;color:#745300}
+.item-status.sold{background:#eee;color:#666}
+html[data-theme="dark"] .item-status{background:#34272e;color:#f7edf2}
+html[data-theme="dark"] .item-status.reserved{background:#4a3a19;color:#ffe69b}
+html[data-theme="dark"] .item-status.sold{background:#363136;color:#bbb}
+
+
+input[type=number]{width:100%;border:1px solid #dbcdd4;border-radius:12px;padding:12px;background:#fff}
+html[data-theme="dark"] input[type=number]{background:#1b1519!important;color:#fff!important;border-color:#493740!important}
+
+
+/* V5.8 admin Facebook embed thumbnails */
+.admin-fb-thumb{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+.admin-fb-thumb iframe{
+  width:500px;
+  height:520px;
+  border:0;
+  transform:scale(.56);
+  transform-origin:top left;
+  pointer-events:none;
+}
+.admin-fb-label{
+  position:absolute;
+  left:8px;
+  bottom:8px;
+  z-index:3;
+  padding:5px 8px;
+  border-radius:999px;
+  background:rgba(35,23,30,.86);
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+}
+html[data-theme="dark"] .admin-fb-thumb{background:#241c21}
+
+
+/* V5.10 Developer Ad admin audit */
+.creator-ad-admin-preview{
+  margin-top:14px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+  background:#fff9fc;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+.creator-ad-admin-preview strong{display:block;font-family:Georgia,serif;font-size:18px}
+.creator-ad-admin-preview p{margin:5px 0 0;font-size:12px}
+.creator-ad-admin-preview span{
+  flex:0 0 auto;
+  border-radius:999px;
+  padding:9px 12px;
+  background:#23171e;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+}
+.creator-ad-admin-preview.is-hidden{opacity:.45}
+html[data-theme="dark"] .creator-ad-admin-preview{background:#241c21;border-color:#43333b}
+
+</style></head><body><header class="top"><div class="wrap"><div><div class="brand"><span style="color:#241b22">The Overrun Closet</span> <span style="font:500 12px Arial,sans-serif;color:#9b8992">by</span> <span style="color:#f12f8a">Blissful Kate</span></div><div class="help">Online owner editor</div><div id="envBadge" class="env-badge live">CHECKING…</div></div><div id="actions" hidden class="right"><a href="/" target="_blank" class="btn light" style="text-decoration:none;color:inherit">View site ↗</a><button id="saveBtn" class="btn dark" onclick="saveAll()">Save online</button><button class="btn light" onclick="logout()">Log out</button></div></div></header><main class="wrap"><section id="login" class="card login"><h1>Owner access</h1><p>Sign in to edit the Hero, branding, Gallery, About, Customer Love, Contact, Facebook cards, footer branding, and developer ad.</p><label>Username</label><input id="u" type="text" autocomplete="username"><label>Password</label><div class="password-wrap"><input id="p" type="password" autocomplete="current-password"><button id="showPasswordBtn" class="show-password" type="button" aria-pressed="false" onclick="togglePassword()">Show</button></div><div class="login-options"><label class="remember-row"><input id="rememberLogin" type="checkbox"> Keep me signed in for 30 days</label></div><button class="btn primary" style="width:100%;margin-top:15px" onclick="doLogin()">Sign in</button><div id="ls" class="status logout-note" role="status" aria-live="polite"></div></section><div id="editor" hidden><section class="card"><h1>Site images</h1><p>Paste direct image URLs. Drag images to change the crop and use Zoom to frame them. Choose what appears on the homepage versus the full Gallery.</p></section><section class="card">
+  <h2>Hero section</h2>
+  <p class="help">Edit the hero image, copy, and buttons. The Overrun Closet cover is the default hero image.</p>
+  <label>Eyebrow</label><input id="heroEyebrowInput" type="text">
+  <label>Main headline</label><textarea id="heroHeadlineInput"></textarea>
+  <label>Description</label><textarea id="heroDescriptionInput"></textarea>
+  <div class="urlrow"><input id="hu" type="url" placeholder="Paste direct hero image URL"><button class="btn light" onclick="heroURL()">Preview URL</button></div>
+  <div id="hp" class="preview hero"><img id="hi"></div>
+  <label>Hero image display</label>
+  <select id="heroFitInput">
+    <option value="contain">Show full image</option>
+    <option value="cover">Fill frame / crop image</option>
+  </select>
+  <div class="help">Show full image keeps the entire Facebook cover visible. Fill frame crops the edges to completely fill the hero.</div>
+  <div class="slider"><span>Zoom</span><input id="hz" type="range" min="1" max="3" step=".01"><output id="hzo"></output></div>
+  <div class="help">Drag the image with your finger or mouse to position it.</div>
+  <label>Primary button text</label><input id="heroPrimaryLabelInput" type="text">
+  <label>Primary button URL</label><input id="heroPrimaryUrlInput" type="url">
+  <label>Secondary button text</label><input id="heroSecondaryLabelInput" type="text">
+  <label>Secondary button URL</label><input id="heroSecondaryUrlInput" type="text">
+  <label>Supporting link text</label><input id="heroSupportLabelInput" type="text">
+  <label>Supporting link URL</label><input id="heroSupportUrlInput" type="url">
+</section><section class="card"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><h2 style="margin-bottom:3px">Gallery</h2><div class="help">Replace, crop, reorder, hide, or add direct image URLs. Featured controls the homepage. You can feature up to 20 items; the homepage shows the first 20 featured + visible items in Gallery order. The full Gallery page ignores Featured and shows every item that is Visible.</div></div><div class="right"><button class="btn light" type="button" onclick="featureFirst20Visible()">Feature first 20 visible</button><button class="btn primary" onclick="addPhoto()">+ Add photo URL</button></div></div><div id="featuredCount" class="help" style="margin-top:12px;font-weight:800"></div><div id="gallery" class="gallery" style="margin-top:10px"></div></section><section class="card">
+  <h2>Main brand identity</h2><p class="help"><b>Display format:</b> The Overrun Closet <span style="color:#9b8992">by</span> <span style="color:#f12f8a">Blissful Kate</span>. The names remain editable, but this order/style is the intended public identity.</p>
+  <p class="help">The Overrun Closet by Blissful Kate is the combined storefront identity. Edit the displayed names here while keeping this visual hierarchy.</p>
+  <label>Main brand</label>
+  <input id="brandPrimaryInput" type="text" placeholder="Blissful Kate">
+  <label>Second brand</label>
+  <input id="brandPartnerInput" type="text" placeholder="The Overrun Closet">
+  <label>Main tagline</label>
+  <input id="brandTaglineInput" type="text" placeholder="Authentic US outlet & retail finds">
+  <label>Supporting tagline</label>
+  <textarea id="brandSubtaglineInput" placeholder="Your favorite brands..."></textarea>
+</section>
+
+<section class="card">
+  <h2>Facebook brand cards</h2>
+  <p class="help">Each Facebook page has its own cover image and button in the homepage Contact section. Facebook CDN cover URLs can expire, so replace them here when needed.</p>
+  <div id="socialBrandEditors"></div>
+</section>
+
+<section class="card">
+  <h2>Homepage section headings</h2>
+  <p class="help">Edit the public text that introduces Gallery, Customer Love, and the Facebook cards.</p>
+  <h3>Gallery</h3>
+  <label>Small heading</label><input id="gallerySectionEyebrowInput" type="text">
+  <label>Main heading</label><input id="gallerySectionHeadingInput" type="text">
+  <label>Description</label><textarea id="gallerySectionDescriptionInput"></textarea>
+  <h3>Facebook posts inside Gallery</h3><p class="help">Homepage and full Gallery use the exact same Facebook card layout. Homepage shows only Featured + Visible Facebook posts; full Gallery shows all Visible Facebook posts.</p>
+  <label>Small heading</label><input id="gallerySocialEyebrowInput" type="text">
+  <label>Main heading</label><input id="gallerySocialHeadingInput" type="text">
+  <label>Description</label><textarea id="gallerySocialDescriptionInput"></textarea>
+  <h3>Customer Love</h3>
+  <label>Small heading</label><input id="loveSectionEyebrowInput" type="text">
+  <label>Main heading</label><input id="loveSectionHeadingInput" type="text">
+  <label>Description</label><textarea id="loveSectionDescriptionInput"></textarea>
+  <label>See-more button text</label><input id="loveMoreLabelInput" type="text">
+  <h3>Facebook cards</h3>
+  <label>Small heading</label><input id="facebookSectionEyebrowInput" type="text">
+  <label>Main heading</label><input id="facebookSectionHeadingInput" type="text">
+  <label>Description</label><textarea id="facebookSectionDescriptionInput"></textarea>
+</section>
+
+<section class="card">
+  <h2>About section</h2><p class="help">The public About heading uses the same brand styling: <b style="color:#241b22">The Overrun Closet</b> <span style="color:#9b8992">by</span> <b style="color:#f12f8a">Blissful Kate</b>.</p>
+  <p class="help">Explain clearly that The Overrun Closet is the main page and Blissful Kate remains part of the same shop.</p>
+  <label>Small heading</label><input id="aboutEyebrowInput" type="text">
+  <label>Main heading</label><input id="aboutHeadingInput" type="text">
+  <label>Lead paragraph</label><textarea id="aboutLeadInput"></textarea>
+  <label>Second paragraph</label><textarea id="aboutBodyInput"></textarea>
+  <label>Closing note</label><textarea id="aboutNoteInput"></textarea>
+  <h3>About cards</h3>
+  <div id="aboutCardEditors"></div>
+</section>
+
+<section class="card">
+  <h2>Contact section</h2>
+  <p class="help">Edit the shared contact details shown beside both Facebook brand cards.</p>
+
+  <label>Small heading</label>
+  <input id="contactEyebrowInput" type="text" placeholder="Contact">
+
+  <label>Main heading</label>
+  <input id="contactHeadingInput" type="text" placeholder="See something you like?">
+
+  <label>Message</label>
+  <textarea id="contactMessageInput" placeholder="Contact message"></textarea>
+
+  <label>Phone</label>
+  <input id="contactPhoneInput" type="text" placeholder="Phone number">
+
+  <label>Email</label>
+  <input id="contactEmailInput" type="text" placeholder="Email address">
+
+  <label>Location</label>
+  <input id="contactLocationInput" type="text" placeholder="Location">
+
+</section>
+
+<section class="card">
+  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+    <div><h2 style="margin-bottom:3px">Customer Love</h2><div class="help">Add customer feedback, optional customer image URL, and the original Facebook source link.</div></div>
+    <button class="btn primary" onclick="addFeedback()">+ Add feedback</button>
+  </div>
+  <div id="feedbackList" style="margin-top:15px"></div>
+</section>
+
+<section class="card">
+  <h2>People behind the shop</h2>
+  <p class="help">This page already has useful default Owner, Developer, and promotional information. Edit anything you want. Profile photos can use direct Facebook CDN image addresses.</p>
+
+  <label class="checkrow"><input id="peopleVisible" type="checkbox"> Show this section on the public site</label>
+  <label>Small heading</label><input id="peopleEyebrowInput" type="text">
+  <label>Main heading</label><input id="peopleHeadingInput" type="text">
+  <label>Description</label><textarea id="peopleDescriptionInput"></textarea>
+
+  <h3>Shop Owner / Facebook Page Admin</h3>
+  <label class="checkrow"><input id="ownerVisible" type="checkbox"> Show owner / page admin card</label>
+  <label>Name</label><input id="ownerNameInput" type="text">
+  <label>Role / subtitle</label><input id="ownerRoleInput" type="text">
+  <label>Profile image URL</label><input id="ownerPhotoInput" type="url" placeholder="https://scontent...fbcdn.net/...">
+  <label>About</label><textarea id="ownerBioInput"></textarea>
+  <label>Fun info heading</label><input id="ownerFunTitleInput" type="text">
+  <label>Fun info</label><textarea id="ownerFunTextInput"></textarea>
+  <label>Button text</label><input id="ownerButtonLabelInput" type="text">
+  <label>Button URL</label><input id="ownerButtonUrlInput" type="url">
+
+  <h3>Web Developer</h3>
+  <label class="checkrow"><input id="developerVisible" type="checkbox"> Show developer card</label>
+  <label>Name</label><input id="developerNameInput" type="text">
+  <label>Role / subtitle</label><input id="developerRoleInput" type="text">
+  <label>Profile image URL</label><input id="developerPhotoInput" type="url" placeholder="https://scontent...fbcdn.net/...">
+  <label>About</label><textarea id="developerBioInput"></textarea>
+  <label>Fun info heading</label><input id="developerFunTitleInput" type="text">
+  <label>Fun info</label><textarea id="developerFunTextInput"></textarea>
+  <label>Button text</label><input id="developerButtonLabelInput" type="text">
+  <label>Button URL</label><input id="developerButtonUrlInput" type="url">
+
+  <h3>Second promotional block</h3>
+  <label class="checkrow"><input id="peopleAdVisible" type="checkbox"> Show second ad block</label>
+  <label>Small heading</label><input id="peopleAdEyebrowInput" type="text">
+  <label>Heading</label><input id="peopleAdHeadingInput" type="text">
+  <label>Message</label><textarea id="peopleAdBodyInput"></textarea>
+  <label>Button text</label><input id="peopleAdButtonLabelInput" type="text">
+  <label>Button URL</label><input id="peopleAdButtonUrlInput" type="url">
+</section>
+
+<section class="card"><h2>Developer ad block</h2><p class="help">Edit the promotional block shown near the bottom of the homepage, just above the footer.</p>
+<label>Small heading / eyebrow</label><input id="adEyebrow" type="text"><label>Heading</label><input id="adTitle" type="text">
+<label>Message</label><textarea id="adBody"></textarea>
+<label>Button text</label><input id="adButtonLabel" type="text">
+<label>Button URL</label><input id="adButtonUrl" type="url">
+<label class="checkrow"><input id="adVisible" type="checkbox"> Show this ad block on the public site</label>
+<div id="creatorAdAdminState" class="help" style="margin-top:10px;font-weight:900"></div>
+<div id="creatorAdPreview" class="creator-ad-admin-preview">
+  <div>
+    <strong id="creatorAdPreviewTitle"></strong>
+    <p id="creatorAdPreviewBody"></p>
+  </div>
+  <span id="creatorAdPreviewButton"></span>
+</div>
+</section>
+<div id="ss" class="status"></div><div id="dirtyHint" class="save-hint"></div></div></main><div id="dlg" class="dialog"><div class="box"><h2>Edit gallery photo</h2><label>Facebook image URL</label><div class="urlrow"><input id="eu" type="url"><button class="btn light" onclick="editURL()">Preview</button></div><label>Item title (optional)</label><input id="et" type="text" placeholder="e.g. Guess tee">
+<label>Caption / details (optional)</label><textarea id="ec" placeholder="Optional size, color, or short description"></textarea>
+<label>Facebook item/post URL</label><input id="efb" type="url" placeholder="https://www.facebook.com/...">
+<label>Facebook embed code or Plugin URL (optional)</label>
+<textarea id="eembed" placeholder='Paste the Facebook iframe embed code or https://www.facebook.com/plugins/post.php?...'></textarea>
+<div class="help">You can use a normal Facebook post URL, an iframe embed code, or both. If there is no direct image URL, the Facebook embed can be used as the gallery item.</div>
+<div class="right" style="margin-top:10px;justify-content:flex-start">
+  <button class="btn light" type="button" onclick="previewGalleryFacebookPost()">Preview Facebook post</button>
+</div>
+<div id="galleryFbEmbedPreview" style="display:none;margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;overflow:hidden">
+  <iframe id="galleryFbEmbedFrame" title="Facebook gallery post preview" style="width:100%;max-width:500px;border:0;display:block;margin:auto" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+</div>
+<label>Embed height</label><input id="eembedh" type="number" min="180" max="900" step="10" value="496">
+<label>Availability</label><select id="estatus"><option value="available">Available</option><option value="reserved">Reserved</option><option value="sold">Sold</option></select>
+<label>Card shape</label><select id="el"><option value="square">Square</option><option value="wide">Wide</option><option value="tall">Tall</option></select><div id="ep" class="preview square" style="margin-top:12px"><img id="ei"></div><div class="slider"><span>Zoom</span><input id="ez" type="range" min="1" max="3" step=".01"><output id="ezo"></output></div><div class="help">Drag the image to choose which area appears in the card.</div><div class="right" style="margin-top:14px"><button class="btn light" onclick="closeEdit()">Cancel</button><button class="btn primary" onclick="applyEdit()">Apply</button></div></div></div><div id="feedbackDlg" class="dialog"><div class="box">
+<h2>Edit customer feedback</h2>
+<label>Customer name</label><input id="fn" type="text" placeholder="Customer name">
+<label>Feedback</label><textarea id="ft" placeholder="Paste or type the customer feedback"></textarea>
+<label>Facebook source URL</label><input id="ff" type="url" placeholder="https://www.facebook.com/...">
+<label>Facebook embed code or Plugin URL (optional)</label>
+<textarea id="fembed" placeholder='Paste the Facebook iframe embed code, the plugins/post.php URL, or leave this empty and use the Facebook source URL above.'></textarea>
+<div class="help">Tip: you can paste only the normal Facebook post URL above. The editor can build the Facebook Post Plugin automatically.</div>
+<div class="right" style="margin-top:10px;justify-content:flex-start">
+  <button class="btn light" type="button" onclick="previewFacebookPost()">Preview Facebook post</button>
+</div>
+<div id="fbEmbedPreview" style="display:none;margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;overflow:hidden">
+  <iframe id="fbEmbedFrame" title="Facebook post preview" style="width:100%;max-width:500px;border:0;display:block;margin:auto" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+</div>
+<label>Embed height</label><input id="fembedh" type="number" min="120" max="700" step="10" value="170">
+<label>Customer image URL (optional)</label><div class="urlrow"><input id="fi" type="url" placeholder="Direct image URL"><button class="btn light" onclick="feedbackPreview()">Preview</button></div>
+<div id="fp" class="preview square" style="margin-top:12px;display:none"><img id="fimg"></div>
+<div class="slider"><span>Zoom</span><input id="fz" type="range" min="1" max="3" step=".01"><output id="fzo"></output></div>
+<label class="checkrow"><input id="ffeatured" type="checkbox"> Featured on homepage</label>
+<label class="checkrow"><input id="fvisible" type="checkbox"> Visible on Customer Love page</label>
+<div class="right" style="margin-top:14px"><button class="btn light" onclick="closeFeedback()">Cancel</button><button class="btn primary" onclick="applyFeedback()">Apply</button></div>
+</div></div>
+<div id="saveToast" class="save-toast" role="status" aria-live="polite"><strong id="saveToastTitle">Saving changes</strong><div id="saveToastMsg" class="msg">Preparing your updates…</div><div class="progress"><span id="saveProgress"></span></div></div><script>
+let defaults = {}, cfg = {}, editing = -1, dirty = false, savingNow = false;
+
+const ADMIN_THEME_KEY='overrunTheme';
+function adminSystemTheme(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+function applyAdminTheme(theme){
+  const t=(theme==='dark'||theme==='light')?theme:adminSystemTheme();
+  document.documentElement.dataset.theme=t;
+  const i=document.getElementById('themeIconAdmin');
+  if(i)i.textContent=t==='dark'?'☀':'☾';
+}
+function initAdminTheme(){
+  let s=null;try{s=localStorage.getItem(ADMIN_THEME_KEY)}catch(e){}
+  applyAdminTheme(s||adminSystemTheme());
+  document.getElementById('themeToggleAdmin')?.addEventListener('click',()=>{
+    const n=document.documentElement.dataset.theme==='dark'?'light':'dark';
+    try{localStorage.setItem(ADMIN_THEME_KEY,n)}catch(e){}
+    applyAdminTheme(n);
+  });
+}
+
+
+function renderEnvironmentBadge(){
+  const badge=document.getElementById('envBadge');
+  if(!badge)return;
+  const host=location.hostname.toLowerCase();
+  const isStaging=host.includes('staging-overrun') || host.includes('localhost') || host.includes('127.0.0.1');
+  badge.textContent=isStaging?'STAGING':'LIVE SITE';
+  badge.className='env-badge '+(isStaging?'staging':'live');
+}
+
+const $ = (s) => document.querySelector(s);
+const clone = (x) => JSON.parse(JSON.stringify(x || {}));
+
+
+function setDirty(value = true) {
+  dirty = value;
+  const hint = $('#dirtyHint');
+  if (hint) hint.innerHTML = dirty ? '<span class="unsaved-dot"></span>Unsaved changes' : 'All changes saved online';
+  const btn = $('#saveBtn');
+  if (btn && !savingNow) btn.textContent = dirty ? 'Save online •' : 'Save online';
+}
+
+function showSaveProgress(title, message, percent) {
+  const toast = $('#saveToast');
+  $('#saveToastTitle').textContent = title;
+  $('#saveToastMsg').textContent = message;
+  $('#saveProgress').style.width = Math.max(0, Math.min(100, percent)) + '%';
+  toast.classList.add('show');
+}
+
+function hideSaveProgress(delay = 1800) {
+  window.setTimeout(() => $('#saveToast')?.classList.remove('show'), delay);
+}
+
+function validateImageURL(url) {
+  if (!url) return { ok: false, error: 'Paste an image URL first.' };
+  try {
+    const u = new URL(url, location.origin);
+    if (u.hostname.includes('facebook.com')) {
+      return { ok: false, error: 'That is a Facebook page link. Use the direct scontent…fbcdn.net image address instead.' };
+    }
+    return { ok: true };
+  } catch {
+    return { ok: false, error: 'That does not look like a valid image URL.' };
+  }
+}
+
+function merge(a, b) {
+  const x = clone(a);
+  if (b?.hero) x.hero = { ...(x.hero || {}), ...b.hero };
+  if (Array.isArray(b?.gallery)) x.gallery = b.gallery;
+  if (Array.isArray(b?.feedback)) x.feedback = b.feedback;
+
+  x.about = { ...(x.about || {}), ...(b?.about || {}) };
+  if (Array.isArray(b?.about?.cards)) x.about.cards = b.about.cards;
+
+  x.sectionCopy = { ...(x.sectionCopy || {}), ...(b?.sectionCopy || {}) };
+  x.sectionCopy.gallery = { ...(x.sectionCopy.gallery || {}), ...(b?.sectionCopy?.gallery || {}) };
+  x.sectionCopy.customerLove = { ...(x.sectionCopy.customerLove || {}), ...(b?.sectionCopy?.customerLove || {}) };
+  x.sectionCopy.facebook = { ...(x.sectionCopy.facebook || {}), ...(b?.sectionCopy?.facebook || {}) };
+
+  x.creatorAd = { ...(x.creatorAd || {}), ...(b?.creatorAd || {}) };
+  x.peopleSection = { ...(x.peopleSection || {}), ...(b?.peopleSection || {}) };
+  x.peopleSection.owner = { ...(x.peopleSection.owner || {}), ...(b?.peopleSection?.owner || {}) };
+  x.peopleSection.developer = { ...(x.peopleSection.developer || {}), ...(b?.peopleSection?.developer || {}) };
+  x.peopleSection.ad = { ...(x.peopleSection.ad || {}), ...(b?.peopleSection?.ad || {}) };
+
+  x.contact = { ...(x.contact || {}), ...(b?.contact || {}) };
+  x.branding = { ...(x.branding || {}), ...(b?.branding || {}) };
+  if (Array.isArray(b?.socialBrands)) x.socialBrands = b.socialBrands;
+  x.gallerySettings = { ...(x.gallerySettings || {}), ...(b?.gallerySettings || {}) };
+  x.feedbackSettings = { ...(x.feedbackSettings || {}), ...(b?.feedbackSettings || {}) };
+  return x;
+}
+
+function crop(img, item) {
+  img.style.objectPosition = `${item.x ?? 50}% ${item.y ?? 50}%`;
+  img.style.transform = `scale(${item.zoom ?? 1})`;
+  img.style.transformOrigin = `${item.x ?? 50}% ${item.y ?? 50}%`;
+}
+
+function drag(box, img, item) {
+  let on = false, lx = 0, ly = 0;
+  box.onpointerdown = (e) => {
+    on = true; lx = e.clientX; ly = e.clientY;
+    box.setPointerCapture?.(e.pointerId);
+  };
+  box.onpointermove = (e) => {
+    if (!on) return;
+    const r = box.getBoundingClientRect();
+    const dx = e.clientX - lx, dy = e.clientY - ly;
+    lx = e.clientX; ly = e.clientY;
+    item.x = Math.max(0, Math.min(100, (item.x ?? 50) - dx / r.width * 100));
+    item.y = Math.max(0, Math.min(100, (item.y ?? 50) - dy / r.height * 100));
+    crop(img, item);
+    setDirty(true);
+  };
+  box.onpointerup = () => on = false;
+  box.onpointercancel = () => on = false;
+}
+
+
+const REMEMBER_USER_KEY='bkAdminRememberUser';
+
+function togglePassword(){
+  const p=$('#p');
+  const b=$('#showPasswordBtn');
+  if(!p||!b)return;
+  const showing=p.type==='text';
+  p.type=showing?'password':'text';
+  b.textContent=showing?'Show':'Hide';
+  b.setAttribute('aria-pressed', String(!showing));
+  p.focus();
+}
+
+function restoreRememberedUsername(){
+  try{
+    const saved=localStorage.getItem(REMEMBER_USER_KEY);
+    if(saved){
+      $('#u').value=saved;
+      $('#rememberLogin').checked=true;
+    }
+  }catch(e){}
+}
+
+async function doLogin() {
+  const ls = $('#ls');
+  ls.textContent = 'Signing in…';
+  ls.className = 'status';
+  try {
+    const r = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: $('#u').value, password: $('#p').value, remember: $('#rememberLogin')?.checked === true })
+    });
+    const j = await r.json();
+    if (!r.ok) {
+      ls.textContent = j.error || 'Sign in failed';
+      ls.className = 'status bad';
+      return;
+    }
+    try{
+      if($('#rememberLogin')?.checked) localStorage.setItem(REMEMBER_USER_KEY, $('#u').value.trim());
+      else localStorage.removeItem(REMEMBER_USER_KEY);
+    }catch(e){}
+    $('#p').value='';
+    await start();
+  } catch (err) {
+    ls.textContent = 'Could not contact the login service.';
+    ls.className = 'status bad';
+  }
+}
+
+async function logout() {
+  const ls = $('#ls');
+  try {
+    await fetch('/api/logout', { method: 'POST', cache: 'no-store' });
+  } catch (e) {
+    // Even if the network response is interrupted, return the UI to signed-out state.
+  }
+  $('#editor').hidden = true;
+  $('#actions').hidden = true;
+  $('#login').hidden = false;
+  $('#p').value = '';
+  ls.textContent = '✓ You are logged out.';
+  ls.className = 'status good logout-note';
+  renderEnvironmentBadge();
+  $('#u').focus();
+}
+
+async function start() {
+  const s = await fetch('/api/session', { cache: 'no-store' })
+    .then(r => r.json()).catch(() => ({ ok: false }));
+  if (!s.ok) {
+    $('#login').hidden = false;
+    $('#editor').hidden = true;
+    $('#actions').hidden = true;
+    return;
+  }
+
+  $('#login').hidden = true;
+  $('#editor').hidden = false;
+  $('#actions').hidden = false;
+
+  defaults = await fetch('/site-defaults.json', { cache: 'no-store' }).then(r => r.json());
+  const online = await fetch('/api/site', { cache: 'no-store' }).then(r => r.json()).catch(() => ({}));
+  cfg = merge(defaults, online);
+  if (!Array.isArray(cfg.gallery)) cfg.gallery = [];
+  cfg.gallery.forEach((x,i)=>{if(typeof x.featured!=='boolean')x.featured=i<6});
+  if (!Array.isArray(cfg.feedback)) cfg.feedback = [];
+  if (!cfg.gallerySettings) cfg.gallerySettings = {homeLimit:12,pageBatch:12};
+  cfg.gallerySettings.homeLimit=Math.max(1,Math.min(20,Number(cfg.gallerySettings.homeLimit||12)));
+  if (!cfg.feedbackSettings) cfg.feedbackSettings = {homeLimit:3};
+  if (!cfg.branding) cfg.branding = {
+    primaryName:'The Overrun Closet',
+    partnerName:'Blissful Kate',
+    tagline:'Authentic US outlet & retail finds',
+    subtagline:'Your favorite brands, without the retail price. Bringing you the best authentic overruns.'
+  };
+  if (!Array.isArray(cfg.socialBrands) || !cfg.socialBrands.length) cfg.socialBrands = [
+    {id:'blissful-kate',name:'Blissful Kate',tagline:'Authentic US outlet & retail finds',facebookUrl:"https://www.facebook.com/profile.php?id=61550356344693",coverUrl:"https://scontent.fmnl12-1.fna.fbcdn.net/v/t39.30808-6/473810290_1700605637170155_334961337731188458_n.jpg?stp=dst-jpg_tt6&cstp=mx1798x1198&ctp=s1798x1198&_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGdBHO_NqZcoAwoz93M5RqY-Cu34-4pKOz4K7fj7iko7Cl8UucbzmG0m_yMDdASbVk-ZSQVRl_kySkmTFVn98tB&_nc_ohc=RbDLAnsz8dEQ7kNvwG3Cmnt&_nc_oc=Adp_MUyej7bkYyJ5Ff0TujDYupAYliJSAj-_SlMknxBrKRxUf1Bgc-8sbuqzoJpAo9E&_nc_zt=23&_nc_ht=scontent.fmnl12-1.fna&_nc_gid=TgGnx49kydKm27XLgFmwHw&_nc_ss=7b2a8&oh=00_AQJEfygtgOgjvi94BShjpIoaRbeJT14UxTZE1Go0q776cQ&oe=6AAA011D",buttonLabel:'Visit Blissful Kate on Facebook',visible:true},
+    {id:'the-overrun-closet',name:'The Overrun Closet',tagline:'Your favorite brands, without the retail price. Bringing you the best authentic overruns.',facebookUrl:"https://www.facebook.com/profile.php?id=61593924706767",coverUrl:"https://scontent.fmnl12-1.fna.fbcdn.net/v/t39.30808-6/798261524_2184542448776469_5018877156635090279_n.jpg?stp=dst-jpg_tt6&cstp=mx1448x1086&ctp=s1448x1086&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeH2mLFnSAO2Rn-nZmPuTOcW3kYJdUJmKFPeRgl1QmYoU8f27bRAeK19U6sWJpAKSo38q0WsccF9ycYtZvVcBnLc&_nc_ohc=yP-njIrbXrQQ7kNvwG8yVON&_nc_oc=AdrCEaph-EQAZkrq4pJDgbKyMazA5nOcVXc8vFy8CiOCVvCwxCALhSBn5Bfi9u-qWQU&_nc_zt=23&_nc_ht=scontent.fmnl12-1.fna&_nc_gid=zZKRVRqjRtD8caqnwuoYRg&_nc_ss=7b2a8&oh=00_AQKMSZCAOHZlQo4wPrxeLEoLvic71Y7prKw3IuK50VjJ6g&oe=6AA9F38F",buttonLabel:'Visit The Overrun Closet on Facebook',visible:true}
+  ];
+  if (!cfg.about||!cfg.about.heading) cfg.about={
+    eyebrow:'Our story',
+    heading:'The Overrun Closet by Blissful Kate',
+    lead:'The Overrun Closet is now the main showcase — bringing you authentic overruns and favorite brands at prices that make more sense.',
+    body:'Blissful Kate remains part of our story and continues as a separate Facebook page, while The Overrun Closet takes the lead for our current collections, new arrivals, and everyday finds.',
+    note:'Both pages belong to the same shop, so you can browse either one and message us for availability, reservations, delivery, pickup, and other inquiries.',
+    cards:[
+      {title:'Authentic overruns',text:'Favorite brands and authentic overrun finds without the usual retail price.'},
+      {title:'Fresh arrivals',text:'New pieces and collections are added regularly as stock becomes available.'},
+      {title:'One shop, two pages',text:'The Overrun Closet is our main page, with Blissful Kate continuing as part of the same shop.'},
+      {title:'Facebook-first',text:'Pricing, reservations, availability and transactions continue through our Facebook pages.'}
+    ]
+  };
+  if (!cfg.contact) cfg.contact = {
+    eyebrow:'Contact',
+    heading:'Let’s shop together!',
+    message:'Message us for pricing, sizes, availability, reservations, delivery or pickup.',
+    phone:'0965 239 3999',
+    email:'katedanielle0904@gmail.com',
+    location:'Villas del Pueblo Subd., Buli, Taal, Batangas 4208',
+    facebookLabel:'Visit Blissful Kate on Facebook',
+    facebookUrl:'https://www.facebook.com/share/19TFKaDsb6/?mibextid=wwXIfr',
+    messengerLabel:'Message us on Messenger',
+    messengerUrl:'https://www.facebook.com/share/19TFKaDsb6/?mibextid=wwXIfr'
+  };
+  if (!cfg.hero) cfg.hero = { url: "https://scontent.fmnl12-1.fna.fbcdn.net/v/t39.30808-6/798261524_2184542448776469_5018877156635090279_n.jpg?stp=dst-jpg_tt6&cstp=mx1448x1086&ctp=s1448x1086&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeH2mLFnSAO2Rn-nZmPuTOcW3kYJdUJmKFPeRgl1QmYoU8f27bRAeK19U6sWJpAKSo38q0WsccF9ycYtZvVcBnLc&_nc_ohc=yP-njIrbXrQQ7kNvwG8yVON&_nc_oc=AdrCEaph-EQAZkrq4pJDgbKyMazA5nOcVXc8vFy8CiOCVvCwxCALhSBn5Bfi9u-qWQU&_nc_zt=23&_nc_ht=scontent.fmnl12-1.fna&_nc_gid=zZKRVRqjRtD8caqnwuoYRg&_nc_ss=7b2a8&oh=00_AQKMSZCAOHZlQo4wPrxeLEoLvic71Y7prKw3IuK50VjJ6g&oe=6AA9F38F", x: 50, y: 50, zoom: 1 };
+  cfg.hero={eyebrow:'Authentic overruns. Favorite brands.',headline:'Your favorite brands, without the retail price.',description:'The Overrun Closet is our main page for authentic overruns, fresh arrivals, and everyday finds — with Blissful Kate continuing as part of the same shop.',primaryLabel:'Visit The Overrun Closet ↗',primaryUrl:"https://www.facebook.com/profile.php?id=61593924706767",secondaryLabel:'Browse gallery ↓',secondaryUrl:'#gallery',supportLabel:'Blissful Kate page ↗',supportUrl:"https://www.facebook.com/profile.php?id=61550356344693",...cfg.hero};
+  if (!cfg.sectionCopy) cfg.sectionCopy={
+    gallery:{eyebrow:'Featured finds',heading:'Latest from The Overrun Closet',description:'A quick look at recent overruns, collections, and favorite finds. Tap any photo for a closer view.',socialEyebrow:'From Facebook',socialHeading:'Fresh posts from The Overrun Closet',socialDescription:'See album updates, new drops, and original Facebook posts in their full format.'},
+    customerLove:{eyebrow:'From our customers',heading:'Customer Love',description:'Feedback and customer moments shared with The Overrun Closet by Blissful Kate.',moreLabel:'See more customer love →'},
+    facebook:{eyebrow:'Our Facebook pages',heading:'One shop. Two pages.',description:'The Overrun Closet is our main page. Blissful Kate remains part of the same shop and story.'}
+  };
+  if (!cfg.creatorAd) cfg.creatorAd = {
+    eyebrow:'WEB DESIGN & DEVELOPMENT',
+    title:'Need a simple showcase site like this?',
+    body:'We build lightweight websites, PWAs, prototypes, and custom tools for small businesses and personal projects. Contact the developer for more inquiries.',
+    buttonLabel:'Contact the Dev ↗',
+    buttonUrl:'https://synthiq.pages.dev/#services',
+    visible:true
+  };
+  if (!cfg.peopleSection) cfg.peopleSection = {
+    eyebrow:'BEHIND THE SHOP',
+    heading:'Meet the people behind the pages',
+    description:'Get to know the people behind The Overrun Closet by Blissful Kate — from the daily Facebook updates and customer inquiries to the website that brings everything together.',
+    visible:true,
+    owner:{name:'Rhona',role:'Shop Owner / Facebook Page Admin',photoUrl:"https://scontent.fmnl12-1.fna.fbcdn.net/v/t39.30808-6/472942079_122237013350011878_458810190335952815_n.jpg?stp=dst-jpg_tt6&cstp=mx1152x2048&ctp=s1152x2048&_nc_cat=107&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEGNGQ1Ibqz4PUhWkmuRiTCkKfcN4mpsaaQp9w3iamxphmaUQbj3pUJ2dgDLoLoPopzSgPIR9kpNabC2jC3fxlS&_nc_ohc=eVf2O2dQqbYQ7kNvwGXRVZu&_nc_oc=AdrdiTNxdJwdq25Ni7GqxhYS8Y2KDIC44jxK-zCIoWJ_0vZoQKfsb7vWj2Q4ItoDHJ8&_nc_zt=23&_nc_ht=scontent.fmnl12-1.fna&_nc_gid=R4ER0h5BYGOVVU_MODArug&_nc_ss=7b2a8&oh=00_AQLajxLRtmwOfxVqrf7oTeaMv-Hg0QdzqfM6p948vxhwaQ&oe=6AAA3CB0",bio:'Rhona is behind the day-to-day life of The Overrun Closet by Blissful Kate — sharing new arrivals, posting product updates, answering customer messages, handling reservations, and helping shoppers find their next favorite piece.',funTitle:'Behind the daily shop',funText:'Finding new arrivals • Posting fresh finds • Answering customer inquiries • Reservations • Delivery and pickup coordination • Keeping both Facebook pages connected',buttonLabel:'Visit The Overrun Closet ↗',buttonUrl:'https://www.facebook.com/profile.php?id=61593924706767',visible:true},
+    developer:{name:'Ferdz',role:'Web Developer / Digital Builder',photoUrl:"https://scontent.fmnl12-1.fna.fbcdn.net/v/t39.30808-6/722560170_1021118523695481_1233219007466163137_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEcT9mf39srlnk8Y1siq41b2_dpmRuTl4Xb92mZG5OXhcWuxYK6XVdvbx78WxACob4BpytCWEcezHBgXYhYQMf7&_nc_ohc=tgGLDygEz_kQ7kNvwGIIOr2&_nc_oc=AdoggPtg6gQRiz0KFMylll3U-S9xQirKt0HYe9lbccb17fjdscA7NE8LSWX_zWheF1I&_nc_zt=23&_nc_ht=scontent.fmnl12-1.fna&_nc_gid=IvMPjEMgZsGhgvy6kUjAog&_nc_ss=7b2a8&oh=00_AQIB6l2kwasJiUJSe7D1HGWLAkv8329J2yom9wVjn2jWLA&oe=6AAA57BE",bio:'Ferdz designed and developed this website to give the shop a cleaner home beyond social media. The focus is simple: fast, practical digital experiences that help small businesses present their brand clearly without the weight of a complicated platform.',funTitle:'What I like to build',funText:'Showcase websites • PWAs • Landing pages • Prototypes • Small-business tools • Workflow automation • Practical custom solutions',buttonLabel:'Get to know the developer ↗',buttonUrl:'https://synthiq.pages.dev/',visible:true},
+    ad:{eyebrow:'WEB DESIGN & DEVELOPMENT',heading:'Want a lightweight site or custom tool for your own business?',body:'If you like how The Overrun Closet works online, I can help create something practical around your own brand, products, services, or workflow — from a polished showcase site to a PWA or custom business tool.',buttonLabel:'Contact the Dev ↗',buttonUrl:'https://synthiq.pages.dev/#services',visible:true}
+  };
+  renderHero();
+  renderGallery();
+  renderFeedback();
+  renderBrandingEditor();
+  renderSocialBrandEditors();
+  renderSectionCopyEditor();
+  renderAboutEditor();
+  renderContactEditor();
+  ensurePeopleDefaults();
+  renderPeopleEditor();
+  ensureCreatorAdDefaults();
+  renderCreatorAdEditor();
+  setDirty(false);
+}
+
+function renderHero() {
+  const h=cfg.hero||{};
+  $('#heroEyebrowInput').value=h.eyebrow||'';
+  $('#heroHeadlineInput').value=h.headline||'';
+  $('#heroDescriptionInput').value=h.description||'';
+  $('#heroFitInput').value=h.fit==='cover'?'cover':'contain';
+  $('#heroPrimaryLabelInput').value=h.primaryLabel||'';
+  $('#heroPrimaryUrlInput').value=h.primaryUrl||'';
+  $('#heroSecondaryLabelInput').value=h.secondaryLabel||'';
+  $('#heroSecondaryUrlInput').value=h.secondaryUrl||'';
+  $('#heroSupportLabelInput').value=h.supportLabel||'';
+  $('#heroSupportUrlInput').value=h.supportUrl||'';
+  $('#hu').value = h.url || '';
+  $('#hi').src = h.url || '';
+  $('#hz').value = h.zoom || 1;
+  $('#hzo').value = (h.zoom || 1).toFixed(2) + '×';
+  crop($('#hi'), h);
+  drag($('#hp'), $('#hi'), h);
+}
+
+function captureHeroEditor(){
+  cfg.hero=cfg.hero||{};
+  cfg.hero.eyebrow=$('#heroEyebrowInput').value.trim();
+  cfg.hero.headline=$('#heroHeadlineInput').value.trim();
+  cfg.hero.description=$('#heroDescriptionInput').value.trim();
+  cfg.hero.fit=$('#heroFitInput').value;
+  cfg.hero.primaryLabel=$('#heroPrimaryLabelInput').value.trim();
+  cfg.hero.primaryUrl=$('#heroPrimaryUrlInput').value.trim();
+  cfg.hero.secondaryLabel=$('#heroSecondaryLabelInput').value.trim();
+  cfg.hero.secondaryUrl=$('#heroSecondaryUrlInput').value.trim();
+  cfg.hero.supportLabel=$('#heroSupportLabelInput').value.trim();
+  cfg.hero.supportUrl=$('#heroSupportUrlInput').value.trim();
+}
+['heroEyebrowInput','heroHeadlineInput','heroDescriptionInput','heroFitInput','heroPrimaryLabelInput','heroPrimaryUrlInput','heroSecondaryLabelInput','heroSecondaryUrlInput','heroSupportLabelInput','heroSupportUrlInput'].forEach(id=>{
+  document.getElementById(id)?.addEventListener('input',()=>{captureHeroEditor();setDirty(true)})
+});
+document.getElementById('heroFitInput')?.addEventListener('change',()=>{captureHeroEditor();crop($('#hi'),cfg.hero);setDirty(true)});
+
+function heroURL() {
+  const url = $('#hu').value.trim();
+  const check = validateImageURL(url);
+  if (!check.ok) { alert(check.error); return false; }
+  cfg.hero.url = url;
+  $('#hi').src = cfg.hero.url;
+  setDirty(true);
+  return true;
+}
+
+$('#hz').oninput = (e) => {
+  cfg.hero.zoom = +e.target.value;
+  $('#hzo').value = cfg.hero.zoom.toFixed(2) + '×';
+  crop($('#hi'), cfg.hero);
+  setDirty(true);
+};
+
+function renderBrandingEditor(){
+  const b=cfg.branding||{};
+  const setValue=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||''};
+  setValue('brandPrimaryInput',b.primaryName);
+  setValue('brandPartnerInput',b.partnerName);
+  setValue('brandTaglineInput',b.tagline);
+  setValue('brandSubtaglineInput',b.subtagline);
+  setValue('brandPrimaryFacebookInput',b.primaryFacebookUrl);
+  setValue('brandSecondaryFacebookInput',b.secondaryFacebookUrl);
+}
+function captureBrandingEditor(){
+  cfg.branding=cfg.branding||{};
+  const read=(id,fallback='')=>{const el=document.getElementById(id);return el?el.value.trim():fallback};
+  cfg.branding.primaryName=read('brandPrimaryInput',cfg.branding.primaryName||'');
+  cfg.branding.partnerName=read('brandPartnerInput',cfg.branding.partnerName||'');
+  cfg.branding.tagline=read('brandTaglineInput',cfg.branding.tagline||'');
+  cfg.branding.subtagline=read('brandSubtaglineInput',cfg.branding.subtagline||'');
+  cfg.branding.primaryFacebookUrl=read('brandPrimaryFacebookInput',cfg.branding.primaryFacebookUrl||'');
+  cfg.branding.secondaryFacebookUrl=read('brandSecondaryFacebookInput',cfg.branding.secondaryFacebookUrl||'');
+}
+['brandPrimaryInput','brandPartnerInput','brandTaglineInput','brandSubtaglineInput','brandPrimaryFacebookInput','brandSecondaryFacebookInput'].forEach(id=>{
+  document.getElementById(id)?.addEventListener('input',()=>{captureBrandingEditor();setDirty(true)})
+});
+
+function renderSocialBrandEditors(){
+  const host=$('#socialBrandEditors');if(!host)return;
+  host.innerHTML='';
+  (cfg.socialBrands||[]).forEach((x,i)=>{
+    const box=document.createElement('div');
+    box.className='item';
+    box.style.marginBottom='14px';
+    const title=document.createElement('h3');title.style.marginTop='0';title.textContent=x.name||`Brand ${i+1}`;
+    box.appendChild(title);
+    const addField=(label,key,type='text')=>{
+      const lab=document.createElement('label');lab.textContent=label;box.appendChild(lab);
+      const el=type==='textarea'?document.createElement('textarea'):document.createElement('input');
+      if(type!=='textarea')el.type=type;
+      el.value=x[key]||'';
+      el.addEventListener('input',()=>{cfg.socialBrands[i][key]=el.value.trim();if(key==='name')title.textContent=el.value.trim()||`Brand ${i+1}`;setDirty(true)});
+      box.appendChild(el);
+    };
+    addField('Brand name','name');
+    addField('Short tagline','tagline','textarea');
+    addField('Facebook page URL','facebookUrl','url');
+    addField('Facebook cover direct image URL','coverUrl','url');
+    addField('Button text','buttonLabel');
+    const lab=document.createElement('label');lab.className='checkrow';
+    const chk=document.createElement('input');chk.type='checkbox';chk.checked=x.visible!==false;
+    chk.addEventListener('change',()=>{cfg.socialBrands[i].visible=chk.checked;setDirty(true)});
+    lab.append(chk,document.createTextNode(' Show this brand card'));box.appendChild(lab);
+    host.appendChild(box);
+  });
+}
+
+function renderSectionCopyEditor(){
+  const x=cfg.sectionCopy||{},g=x.gallery||{},l=x.customerLove||{},f=x.facebook||{};
+  $('#gallerySectionEyebrowInput').value=g.eyebrow||'';
+  $('#gallerySectionHeadingInput').value=g.heading||'';
+  $('#gallerySectionDescriptionInput').value=g.description||'';
+  $('#gallerySocialEyebrowInput').value=g.socialEyebrow||'';
+  $('#gallerySocialHeadingInput').value=g.socialHeading||'';
+  $('#gallerySocialDescriptionInput').value=g.socialDescription||'';
+  $('#loveSectionEyebrowInput').value=l.eyebrow||'';
+  $('#loveSectionHeadingInput').value=l.heading||'';
+  $('#loveSectionDescriptionInput').value=l.description||'';
+  $('#loveMoreLabelInput').value=l.moreLabel||'';
+  $('#facebookSectionEyebrowInput').value=f.eyebrow||'';
+  $('#facebookSectionHeadingInput').value=f.heading||'';
+  $('#facebookSectionDescriptionInput').value=f.description||'';
+}
+function captureSectionCopyEditor(){
+  cfg.sectionCopy=cfg.sectionCopy||{};
+  cfg.sectionCopy.gallery=cfg.sectionCopy.gallery||{};
+  cfg.sectionCopy.customerLove=cfg.sectionCopy.customerLove||{};
+  cfg.sectionCopy.facebook=cfg.sectionCopy.facebook||{};
+  cfg.sectionCopy.gallery.eyebrow=$('#gallerySectionEyebrowInput').value.trim();
+  cfg.sectionCopy.gallery.heading=$('#gallerySectionHeadingInput').value.trim();
+  cfg.sectionCopy.gallery.description=$('#gallerySectionDescriptionInput').value.trim();
+  cfg.sectionCopy.gallery.socialEyebrow=$('#gallerySocialEyebrowInput').value.trim();
+  cfg.sectionCopy.gallery.socialHeading=$('#gallerySocialHeadingInput').value.trim();
+  cfg.sectionCopy.gallery.socialDescription=$('#gallerySocialDescriptionInput').value.trim();
+  cfg.sectionCopy.customerLove.eyebrow=$('#loveSectionEyebrowInput').value.trim();
+  cfg.sectionCopy.customerLove.heading=$('#loveSectionHeadingInput').value.trim();
+  cfg.sectionCopy.customerLove.description=$('#loveSectionDescriptionInput').value.trim();
+  cfg.sectionCopy.customerLove.moreLabel=$('#loveMoreLabelInput').value.trim();
+  cfg.sectionCopy.facebook.eyebrow=$('#facebookSectionEyebrowInput').value.trim();
+  cfg.sectionCopy.facebook.heading=$('#facebookSectionHeadingInput').value.trim();
+  cfg.sectionCopy.facebook.description=$('#facebookSectionDescriptionInput').value.trim();
+}
+['gallerySectionEyebrowInput','gallerySectionHeadingInput','gallerySectionDescriptionInput','gallerySocialEyebrowInput','gallerySocialHeadingInput','gallerySocialDescriptionInput','loveSectionEyebrowInput','loveSectionHeadingInput','loveSectionDescriptionInput','loveMoreLabelInput','facebookSectionEyebrowInput','facebookSectionHeadingInput','facebookSectionDescriptionInput'].forEach(id=>{
+  document.getElementById(id)?.addEventListener('input',()=>{captureSectionCopyEditor();setDirty(true)})
+});
+
+function renderAboutEditor(){
+  const x=cfg.about||{};
+  $('#aboutEyebrowInput').value=x.eyebrow||'';
+  $('#aboutHeadingInput').value=x.heading||'';
+  $('#aboutLeadInput').value=x.lead||'';
+  $('#aboutBodyInput').value=x.body||'';
+  $('#aboutNoteInput').value=x.note||'';
+  const host=$('#aboutCardEditors');host.innerHTML='';
+  const cards=Array.isArray(x.cards)?x.cards:[];
+  for(let i=0;i<4;i++){
+    const c=cards[i]||{title:'',text:''};
+    const box=document.createElement('div');box.className='item';box.style.marginBottom='12px';
+    box.innerHTML=`<label>Card ${i+1} title</label><input data-ac="${i}" data-k="title" value="${esc(c.title||'')}">
+      <label>Card ${i+1} text</label><textarea data-ac="${i}" data-k="text">${esc(c.text||'')}</textarea>`;
+    host.appendChild(box);
+  }
+  host.querySelectorAll('[data-ac]').forEach(el=>el.addEventListener('input',()=>{
+    const i=Number(el.dataset.ac),k=el.dataset.k;
+    cfg.about.cards=Array.isArray(cfg.about.cards)?cfg.about.cards:[];
+    while(cfg.about.cards.length<4)cfg.about.cards.push({title:'',text:''});
+    cfg.about.cards[i][k]=el.value.trim();setDirty(true);
+  }));
+}
+function captureAboutEditor(){
+  cfg.about=cfg.about||{};
+  cfg.about.eyebrow=$('#aboutEyebrowInput').value.trim();
+  cfg.about.heading=$('#aboutHeadingInput').value.trim();
+  cfg.about.lead=$('#aboutLeadInput').value.trim();
+  cfg.about.body=$('#aboutBodyInput').value.trim();
+  cfg.about.note=$('#aboutNoteInput').value.trim();
+}
+['aboutEyebrowInput','aboutHeadingInput','aboutLeadInput','aboutBodyInput','aboutNoteInput'].forEach(id=>{
+  const el=document.getElementById(id);if(el)el.addEventListener('input',()=>{captureAboutEditor();setDirty(true)})
+});
+
+function renderContactEditor(){
+  const c=cfg.contact||{};
+  $('#contactEyebrowInput').value=c.eyebrow||'';
+  $('#contactHeadingInput').value=c.heading||'';
+  $('#contactMessageInput').value=c.message||'';
+  $('#contactPhoneInput').value=c.phone||'';
+  $('#contactEmailInput').value=c.email||'';
+  $('#contactLocationInput').value=c.location||'';
+}
+function captureContactEditor(){
+  if(!cfg.contact)cfg.contact={};
+  cfg.contact.eyebrow=$('#contactEyebrowInput').value.trim();
+  cfg.contact.heading=$('#contactHeadingInput').value.trim();
+  cfg.contact.message=$('#contactMessageInput').value.trim();
+  cfg.contact.phone=$('#contactPhoneInput').value.trim();
+  cfg.contact.email=$('#contactEmailInput').value.trim();
+  cfg.contact.location=$('#contactLocationInput').value.trim();
+}
+['contactEyebrowInput','contactHeadingInput','contactMessageInput','contactPhoneInput','contactEmailInput','contactLocationInput'].forEach(id=>{
+  document.getElementById(id)?.addEventListener('input',()=>{captureContactEditor();setDirty(true)})
+});
+
+
+
+function ensurePeopleDefaults(){
+  const d=defaults?.peopleSection||{};
+  cfg.peopleSection=cfg.peopleSection||{};
+  cfg.peopleSection.owner=cfg.peopleSection.owner||{};
+  cfg.peopleSection.developer=cfg.peopleSection.developer||{};
+  cfg.peopleSection.ad=cfg.peopleSection.ad||{};
+
+  const fill=(target,source,keys)=>{
+    keys.forEach(k=>{
+      if(target[k]===undefined || target[k]===null || (typeof target[k]==='string' && !target[k].trim())){
+        target[k]=source?.[k] ?? '';
+      }
+    });
+  };
+
+  fill(cfg.peopleSection,d,['eyebrow','heading','description']);
+  fill(cfg.peopleSection.owner,d.owner,['name','role','photoUrl','bio','funTitle','funText','buttonLabel','buttonUrl']);
+  fill(cfg.peopleSection.developer,d.developer,['name','role','photoUrl','bio','funTitle','funText','buttonLabel','buttonUrl']);
+  fill(cfg.peopleSection.ad,d.ad,['eyebrow','heading','body','buttonLabel','buttonUrl']);
+
+  if(typeof cfg.peopleSection.visible!=='boolean')cfg.peopleSection.visible=true;
+  if(typeof cfg.peopleSection.owner.visible!=='boolean')cfg.peopleSection.owner.visible=true;
+  if(typeof cfg.peopleSection.developer.visible!=='boolean')cfg.peopleSection.developer.visible=true;
+  if(typeof cfg.peopleSection.ad.visible!=='boolean')cfg.peopleSection.ad.visible=true;
+}
+
+function renderPeopleEditor(){
+  const p=cfg.peopleSection||{},o=p.owner||{},d=p.developer||{},ad=p.ad||{};
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||''};
+  $('#peopleVisible').checked=p.visible!==false;
+  set('peopleEyebrowInput',p.eyebrow);set('peopleHeadingInput',p.heading);set('peopleDescriptionInput',p.description);
+
+  $('#ownerVisible').checked=o.visible!==false;
+  set('ownerNameInput',o.name);set('ownerRoleInput',o.role);set('ownerPhotoInput',o.photoUrl);set('ownerBioInput',o.bio);
+  set('ownerFunTitleInput',o.funTitle);set('ownerFunTextInput',o.funText);set('ownerButtonLabelInput',o.buttonLabel);set('ownerButtonUrlInput',o.buttonUrl);
+
+  $('#developerVisible').checked=d.visible!==false;
+  set('developerNameInput',d.name);set('developerRoleInput',d.role);set('developerPhotoInput',d.photoUrl);set('developerBioInput',d.bio);
+  set('developerFunTitleInput',d.funTitle);set('developerFunTextInput',d.funText);set('developerButtonLabelInput',d.buttonLabel);set('developerButtonUrlInput',d.buttonUrl);
+
+  $('#peopleAdVisible').checked=ad.visible!==false;
+  set('peopleAdEyebrowInput',ad.eyebrow);set('peopleAdHeadingInput',ad.heading);set('peopleAdBodyInput',ad.body);
+  set('peopleAdButtonLabelInput',ad.buttonLabel);set('peopleAdButtonUrlInput',ad.buttonUrl);
+}
+function capturePeopleEditor(){
+  if(!cfg.peopleSection)cfg.peopleSection={};
+  const p=cfg.peopleSection;
+  p.visible=$('#peopleVisible').checked;
+  p.eyebrow=$('#peopleEyebrowInput').value.trim();p.heading=$('#peopleHeadingInput').value.trim();p.description=$('#peopleDescriptionInput').value.trim();
+
+  p.owner=p.owner||{};
+  p.owner.visible=$('#ownerVisible').checked;
+  p.owner.name=$('#ownerNameInput').value.trim();p.owner.role=$('#ownerRoleInput').value.trim();p.owner.photoUrl=$('#ownerPhotoInput').value.trim();p.owner.bio=$('#ownerBioInput').value.trim();
+  p.owner.funTitle=$('#ownerFunTitleInput').value.trim();p.owner.funText=$('#ownerFunTextInput').value.trim();p.owner.buttonLabel=$('#ownerButtonLabelInput').value.trim();p.owner.buttonUrl=$('#ownerButtonUrlInput').value.trim();
+
+  p.developer=p.developer||{};
+  p.developer.visible=$('#developerVisible').checked;
+  p.developer.name=$('#developerNameInput').value.trim();p.developer.role=$('#developerRoleInput').value.trim();p.developer.photoUrl=$('#developerPhotoInput').value.trim();p.developer.bio=$('#developerBioInput').value.trim();
+  p.developer.funTitle=$('#developerFunTitleInput').value.trim();p.developer.funText=$('#developerFunTextInput').value.trim();p.developer.buttonLabel=$('#developerButtonLabelInput').value.trim();p.developer.buttonUrl=$('#developerButtonUrlInput').value.trim();
+
+  p.ad=p.ad||{};
+  p.ad.visible=$('#peopleAdVisible').checked;
+  p.ad.eyebrow=$('#peopleAdEyebrowInput').value.trim();p.ad.heading=$('#peopleAdHeadingInput').value.trim();p.ad.body=$('#peopleAdBodyInput').value.trim();
+  p.ad.buttonLabel=$('#peopleAdButtonLabelInput').value.trim();p.ad.buttonUrl=$('#peopleAdButtonUrlInput').value.trim();
+}
+const PEOPLE_EDITOR_IDS=['peopleVisible','peopleEyebrowInput','peopleHeadingInput','peopleDescriptionInput','ownerVisible','ownerNameInput','ownerRoleInput','ownerPhotoInput','ownerBioInput','ownerFunTitleInput','ownerFunTextInput','ownerButtonLabelInput','ownerButtonUrlInput','developerVisible','developerNameInput','developerRoleInput','developerPhotoInput','developerBioInput','developerFunTitleInput','developerFunTextInput','developerButtonLabelInput','developerButtonUrlInput','peopleAdVisible','peopleAdEyebrowInput','peopleAdHeadingInput','peopleAdBodyInput','peopleAdButtonLabelInput','peopleAdButtonUrlInput'];
+PEOPLE_EDITOR_IDS.forEach(id=>document.getElementById(id)?.addEventListener(id.toLowerCase().includes('visible')?'change':'input',()=>{capturePeopleEditor();setDirty(true)}));
+
+function ensureCreatorAdDefaults(){
+  const d=defaults?.creatorAd||{};
+  cfg.creatorAd=cfg.creatorAd||{};
+  ['eyebrow','title','body','buttonLabel','buttonUrl'].forEach(k=>{
+    if(cfg.creatorAd[k]===undefined || cfg.creatorAd[k]===null || (typeof cfg.creatorAd[k]==='string' && !cfg.creatorAd[k].trim())){
+      cfg.creatorAd[k]=d[k] ?? '';
+    }
+  });
+  if(typeof cfg.creatorAd.visible!=='boolean')cfg.creatorAd.visible=true;
+}
+
+function renderCreatorAdEditor(){
+  const ad=cfg.creatorAd||{};
+  $('#adEyebrow').value=ad.eyebrow||'';
+  $('#adTitle').value=ad.title||'';
+  $('#adBody').value=ad.body||'';
+  $('#adButtonLabel').value=ad.buttonLabel||'';
+  $('#adButtonUrl').value=ad.buttonUrl||'';
+  $('#adVisible').checked=ad.visible!==false;
+  updateCreatorAdPreview();
+}
+function captureCreatorAdEditor(){
+  cfg.creatorAd=cfg.creatorAd||{};
+  cfg.creatorAd.eyebrow=$('#adEyebrow')?.value.trim()||'';
+  cfg.creatorAd.title=$('#adTitle')?.value.trim()||'';
+  cfg.creatorAd.body=$('#adBody')?.value.trim()||'';
+  cfg.creatorAd.buttonLabel=$('#adButtonLabel')?.value.trim()||'Send a project inquiry ↗';
+  cfg.creatorAd.buttonUrl=$('#adButtonUrl')?.value.trim()||'https://synthiq.pages.dev/#services';
+  cfg.creatorAd.visible=$('#adVisible')?.checked!==false;
+}
+function updateCreatorAdPreview(){
+  const ad=cfg.creatorAd||{};
+  const title=document.getElementById('creatorAdPreviewTitle');
+  const body=document.getElementById('creatorAdPreviewBody');
+  const button=document.getElementById('creatorAdPreviewButton');
+  const preview=document.getElementById('creatorAdPreview');
+  const state=document.getElementById('creatorAdAdminState');
+  if(title)title.textContent=ad.title||'Developer ad heading';
+  if(body)body.textContent=ad.body||'Developer ad message';
+  if(button)button.textContent=ad.buttonLabel||'Send a project inquiry ↗';
+  if(preview)preview.classList.toggle('is-hidden',ad.visible===false);
+  if(state)state.textContent=ad.visible===false?'Currently hidden on the public site':'Currently set to show on the public site';
+}
+['adEyebrow','adTitle','adBody','adButtonLabel','adButtonUrl','adVisible'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el)el.addEventListener(id==='adVisible'?'change':'input',()=>{
+    captureCreatorAdEditor();
+    updateCreatorAdPreview();
+    setDirty(true);
+  });
+});
+function featureFirst20Visible(){
+  let used=0;
+  cfg.gallery.forEach(item=>{
+    if(item.visible!==false && used<20){item.featured=true;used++}
+    else if(item.visible!==false){item.featured=false}
+  });
+  setDirty(true);
+  renderGallery();
+}
+
+function normalizeAdminGalleryFacebookEmbed(raw, sourceUrl=''){
+  let v=String(raw||'').trim().replace(/&amp;/g,'&');
+  if(v){
+    if(/^https:\/\/www\.facebook\.com\/plugins\/post\.php\?/i.test(v)) return v;
+    const m=v.match(/(?:<)?iframe\b[^>]*\bsrc=["']([^"']+)["'][^>]*>?/i);
+    if(m){
+      const src=String(m[1]||'').replace(/&amp;/g,'&');
+      if(/^https:\/\/www\.facebook\.com\/plugins\/post\.php\?/i.test(src)) return src;
+    }
+  }
+  const fb=String(sourceUrl||'').trim();
+  if(/^https:\/\/(?:www\.)?facebook\.com\//i.test(fb) && !/\/plugins\/post\.php/i.test(fb)){
+    return 'https://www.facebook.com/plugins/post.php?href='+encodeURIComponent(fb)+'&show_text=true&width=500';
+  }
+  return '';
+}
+function makeAdminEmbedThumb(item, preview){
+  const src=normalizeAdminGalleryFacebookEmbed(item.facebookEmbed,item.facebookUrl);
+  if(!src)return false;
+  preview.innerHTML='';
+  const wrap=document.createElement('div');wrap.className='admin-fb-thumb';
+  const frame=document.createElement('iframe');
+  frame.src=src;
+  frame.title='Facebook embedded post preview';
+  frame.scrolling='no';
+  frame.frameBorder='0';
+  frame.allowFullscreen=true;
+  frame.allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';
+  wrap.appendChild(frame);
+  const label=document.createElement('span');label.className='admin-fb-label';label.textContent='FACEBOOK POST';
+  preview.append(wrap,label);
+  return true;
+}
+
+function renderGallery() {
+  const gallery = $('#gallery');
+  gallery.innerHTML = '';
+  const featuredVisible = cfg.gallery.filter(x => x.visible !== false && x.featured !== false).length;
+  const featuredTotal = cfg.gallery.filter(x => x.featured !== false).length;
+  const countEl = $('#featuredCount');
+  if (countEl) {
+    countEl.textContent = `${Math.min(featuredVisible,20)} of ${featuredVisible} featured + visible item${featuredVisible===1?'':'s'} are selected for the homepage${featuredVisible>20?' (only the first 20 are shown)':''}. ${featuredTotal-featuredVisible>0?`${featuredTotal-featuredVisible} featured item${featuredTotal-featuredVisible===1?' is':'s are'} currently hidden.`:''}`;
+  }
+  cfg.gallery.forEach((item, i) => {
+    const n = document.createElement('div');
+    n.className = 'item' + (item.visible === false ? ' hidden' : '');
+    n.innerHTML = `<div class="preview ${item.layout || 'square'}"><img></div><div class="help" style="margin-top:7px;min-height:18px;font-weight:800;color:var(--ink)">${escapeHTML(item.title||'')}</div><span class="item-status ${item.status||'available'}">${(item.status||'available').toUpperCase()}</span><div class="mini"><button data-a="e">Adjust / Replace</button><button data-a="f">${item.featured === false ? '☆ Add to homepage' : '★ On homepage'}</button><button data-a="u">↑</button><button data-a="d">↓</button><button data-a="h">${item.visible === false ? 'Show' : 'Hide'}</button><button data-a="x">Delete</button></div>`;
+    const preview = n.querySelector('.preview');
+    const im = n.querySelector('img');
+    if(item.url){
+      im.src=item.url;
+      crop(im,item);
+    }else if(makeAdminEmbedThumb(item,preview)){
+      // Live, non-interactive Facebook preview makes embed-only items identifiable in Admin.
+    }else{
+      im.removeAttribute('src');
+      im.alt='Facebook embedded post';
+      im.style.background='linear-gradient(135deg,#f7e8ef,#fff)';
+    }
+    n.querySelector('[data-a="e"]').onclick = () => openEdit(i);
+    n.querySelector('[data-a="f"]').onclick = () => { item.featured = item.featured === false ? true : false; setDirty(true); renderGallery(); };
+    n.querySelector('[data-a="u"]').onclick = () => move(i, -1);
+    n.querySelector('[data-a="d"]').onclick = () => move(i, 1);
+    n.querySelector('[data-a="h"]').onclick = () => { item.visible = item.visible === false ? true : false; setDirty(true); renderGallery(); };
+    n.querySelector('[data-a="x"]').onclick = () => {
+      if (confirm('Delete this photo from the online gallery?')) {
+        cfg.gallery.splice(i, 1);
+        setDirty(true);
+        renderGallery();
+      }
+    };
+    gallery.appendChild(n);
+  });
+}
+
+function move(i, k) {
+  const j = i + k;
+  if (j < 0 || j >= cfg.gallery.length) return;
+  [cfg.gallery[i], cfg.gallery[j]] = [cfg.gallery[j], cfg.gallery[i]];
+  setDirty(true);
+  renderGallery();
+}
+
+function addPhoto() {
+  cfg.gallery.unshift({ id: 'photo-' + Date.now(), url: '', title:'', caption:'', facebookUrl:'', facebookEmbed:'', embedHeight:496, status:'available', layout: 'square', x: 50, y: 50, zoom: 1, visible: true, featured: false });
+  setDirty(true);
+  openEdit(0);
+}
+
+function openEdit(i) {
+  editing = i;
+  const item = cfg.gallery[i];
+  $('#eu').value = item.url || '';
+  $('#et').value = item.title || '';
+  $('#ec').value = item.caption || '';
+  $('#efb').value = item.facebookUrl || '';
+  $('#eembed').value = item.facebookEmbed || '';
+  $('#eembedh').value = Math.max(180,Math.min(900,Number(item.embedHeight||496)));
+  $('#galleryFbEmbedPreview').style.display='none';
+  $('#galleryFbEmbedFrame').src='about:blank';
+  $('#estatus').value = ['available','reserved','sold'].includes(item.status) ? item.status : 'available';
+  $('#el').value = item.layout || 'square';
+  $('#ez').value = item.zoom || 1;
+  $('#ezo').value = (item.zoom || 1).toFixed(2) + '×';
+  $('#ep').className = 'preview ' + (item.layout || 'square');
+  $('#ei').src = item.url || '';
+  crop($('#ei'), item);
+  drag($('#ep'), $('#ei'), item);
+  $('#dlg').classList.add('open');
+}
+
+function editURL() {
+  const item = cfg.gallery[editing];
+  const url = $('#eu').value.trim();
+  const check = validateImageURL(url);
+  if (!check.ok) { alert(check.error); return; }
+  item.url = url;
+  $('#ei').src = item.url;
+  setDirty(true);
+}
+
+$('#el').onchange = (e) => {
+  if (editing < 0) return;
+  const item = cfg.gallery[editing];
+  item.layout = e.target.value;
+  $('#ep').className = 'preview ' + item.layout;
+  setDirty(true);
+};
+
+$('#ez').oninput = (e) => {
+  if (editing < 0) return;
+  const item = cfg.gallery[editing];
+  item.zoom = +e.target.value;
+  $('#ezo').value = item.zoom.toFixed(2) + '×';
+  crop($('#ei'), item);
+  setDirty(true);
+};
+
+function closeEdit() {
+  if (editing >= 0 && !cfg.gallery[editing].url && !cfg.gallery[editing].facebookEmbed && !cfg.gallery[editing].facebookUrl) cfg.gallery.splice(editing, 1);
+  editing = -1;
+  $('#dlg').classList.remove('open');
+  renderGallery();
+}
+
+
+function normalizeGalleryFacebookEmbed(raw, sourceUrl=''){
+  let v=String(raw||'').trim().replace(/&amp;/g,'&');
+  if(v){
+    if(/^https:\/\/www\.facebook\.com\/plugins\/post\.php\?/i.test(v)) return v;
+    const m=v.match(/(?:<)?iframe\b[^>]*\bsrc=["']([^"']+)["'][^>]*>?/i);
+    if(m){
+      const src=String(m[1]||'').replace(/&amp;/g,'&');
+      if(/^https:\/\/www\.facebook\.com\/plugins\/post\.php\?/i.test(src)) return src;
+    }
+  }
+  const fb=String(sourceUrl||'').trim();
+  if(/^https:\/\/(?:www\.)?facebook\.com\//i.test(fb) && !/\/plugins\/post\.php/i.test(fb)){
+    return 'https://www.facebook.com/plugins/post.php?href='+encodeURIComponent(fb)+'&show_text=true&width=500';
+  }
+  return '';
+}
+function previewGalleryFacebookPost(){
+  const base=normalizeGalleryFacebookEmbed($('#eembed').value,$('#efb').value);
+  if(!base){alert('Paste a Facebook post URL, Facebook Plugin URL, or iframe embed code first.');return}
+  const wrap=$('#galleryFbEmbedPreview'),frame=$('#galleryFbEmbedFrame');
+  wrap.style.display='block';
+  requestAnimationFrame(()=>{
+    const w=Math.max(280,Math.min(500,Math.floor(wrap.clientWidth-20||500)));
+    let src=base;
+    try{const u=new URL(base,location.href);u.searchParams.set('width',String(w));src=u.toString()}catch(e){}
+    frame.width=String(w);
+    frame.height=String(Math.max(180,Math.min(900,Number($('#eembedh').value||496))));
+    frame.src=src;
+  });
+}
+
+function applyEdit() {
+  const item = cfg.gallery[editing];
+  const url = $('#eu').value.trim();
+  const fbUrl = $('#efb').value.trim();
+  const fbEmbedRaw = $('#eembed').value.trim();
+  const normalizedEmbed = normalizeGalleryFacebookEmbed(fbEmbedRaw, fbUrl);
+  if(url){
+    const check = validateImageURL(url);
+    if (!check.ok) { alert(check.error); return; }
+  }
+  if(!url && !normalizedEmbed){
+    alert('Add either a direct image URL or a Facebook post/embed.');
+    return;
+  }
+  item.url = url;
+  item.title = $('#et').value.trim();
+  item.caption = $('#ec').value.trim();
+  item.facebookUrl = fbUrl;
+  item.facebookEmbed = fbEmbedRaw;
+  item.embedHeight = Math.max(180,Math.min(900,Number($('#eembedh').value||496)));
+  item.status = $('#estatus').value;
+  item.layout = $('#el').value;
+  setDirty(true);
+  editing = -1;
+  $('#dlg').classList.remove('open');
+  renderGallery();
+}
+
+
+function normalizeFacebookEmbed(raw, sourceUrl=''){
+  let v=String(raw||'').trim().replace(/&amp;/g,'&');
+  if(v){
+    if(/^https:\/\/www\.facebook\.com\/plugins\/post\.php\?/i.test(v)) return v;
+    const m=v.match(/(?:<)?iframe\b[^>]*\bsrc=["']([^"']+)["'][^>]*>?/i);
+    if(m){
+      const src=String(m[1]||'').replace(/&amp;/g,'&');
+      if(/^https:\/\/www\.facebook\.com\/plugins\/post\.php\?/i.test(src)) return src;
+    }
+  }
+  const fb=String(sourceUrl||'').trim();
+  if(/^https:\/\/(?:www\.)?facebook\.com\//i.test(fb) && !/\/plugins\/post\.php/i.test(fb)){
+    return 'https://www.facebook.com/plugins/post.php?href='+encodeURIComponent(fb)+'&show_text=true&width=500';
+  }
+  return '';
+}
+let feedbackEditing = -1;
+let feedbackNewDraft = false;
+function renderFeedback(){
+  const host=$('#feedbackList'); if(!host)return; host.innerHTML='';
+  if(!cfg.feedback.length){host.innerHTML='<div class="help">No customer feedback yet. Click “+ Add feedback” to create the first entry.</div>';return}
+  cfg.feedback.forEach((x,i)=>{
+    const row=document.createElement('div');row.className='item'+(x.visible===false?' hidden':'');row.style.marginBottom='10px';
+    row.innerHTML=`<div style="display:flex;gap:12px;align-items:center"><div style="width:82px;flex:0 0 82px"><div class="preview square"><img></div></div><div style="min-width:0;flex:1"><strong>${escapeHTML(x.name||'Customer')}</strong><div class="help" style="margin-top:4px">${escapeHTML((x.text||'Facebook embedded post').slice(0,150))}</div><div class="mini"><button data-a="e">Edit</button><button data-a="f">${x.featured===false?'☆ Feature':'★ Featured'}</button><button data-a="h">${x.visible===false?'Show':'Hide'}</button><button data-a="u">↑</button><button data-a="d">↓</button><button data-a="x">Delete</button></div></div></div>`;
+    const im=row.querySelector('img');if(x.imageUrl){im.src=x.imageUrl;crop(im,x)}else{im.style.display='none'}
+    row.querySelector('[data-a="e"]').onclick=()=>openFeedback(i);
+    row.querySelector('[data-a="f"]').onclick=()=>{x.featured=x.featured===false?true:false;setDirty(true);renderFeedback()};
+    row.querySelector('[data-a="h"]').onclick=()=>{x.visible=x.visible===false?true:false;setDirty(true);renderFeedback()};
+    row.querySelector('[data-a="u"]').onclick=()=>moveFeedback(i,-1);
+    row.querySelector('[data-a="d"]').onclick=()=>moveFeedback(i,1);
+    row.querySelector('[data-a="x"]').onclick=()=>{if(confirm('Delete this customer feedback?')){cfg.feedback.splice(i,1);setDirty(true);renderFeedback()}};
+    host.appendChild(row);
+  })
+}
+function escapeHTML(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function moveFeedback(i,k){const j=i+k;if(j<0||j>=cfg.feedback.length)return;[cfg.feedback[i],cfg.feedback[j]]=[cfg.feedback[j],cfg.feedback[i]];setDirty(true);renderFeedback()}
+function addFeedback(){cfg.feedback.unshift({id:'feedback-'+Date.now(),name:'',text:'',facebookUrl:'',imageUrl:'',facebookEmbed:'',embedHeight:170,x:50,y:50,zoom:1,featured:true,visible:true});setDirty(true);openFeedback(0,true)}
+function openFeedback(i,isNew=false){
+  feedbackEditing=i;
+  feedbackNewDraft=!!isNew;
+  const x=cfg.feedback[i];
+  $('#fn').value=x.name||'';
+  $('#ft').value=x.text||'';
+  $('#ff').value=x.facebookUrl||'';
+  $('#fembed').value=x.facebookEmbed||'';
+  $('#fembedh').value=x.embedHeight||170;
+  $('#fi').value=x.imageUrl||'';
+  $('#fz').value=x.zoom||1;
+  $('#fzo').value=(x.zoom||1).toFixed(2)+'×';
+  $('#ffeatured').checked=x.featured!==false;
+  $('#fvisible').checked=x.visible!==false;
+  $('#fbEmbedPreview').style.display='none';
+  $('#fbEmbedFrame').src='about:blank';
+  if(x.imageUrl){
+    $('#fp').style.display='block';
+    $('#fimg').src=x.imageUrl;
+    crop($('#fimg'),x);
+  }else{
+    $('#fp').style.display='none';
+    $('#fimg').removeAttribute('src');
+  }
+  drag($('#fp'),$('#fimg'),x);
+  $('#feedbackDlg').classList.add('open')
+}
+function feedbackPreview(){
+  if(feedbackEditing<0)return;
+  const x=cfg.feedback[feedbackEditing],url=$('#fi').value.trim();
+  if(!url){
+    x.imageUrl='';
+    $('#fp').style.display='none';
+    $('#fimg').removeAttribute('src');
+    setDirty(true);
+    return;
+  }
+  const check=validateImageURL(url);
+  if(!check.ok){alert(check.error);return}
+  x.imageUrl=url;
+  $('#fp').style.display='block';
+  $('#fimg').src=url;
+  crop($('#fimg'),x);
+  setDirty(true)
+}
+function previewFacebookPost(){
+  const source=$('#ff').value.trim();
+  const raw=$('#fembed').value.trim();
+  const src=normalizeFacebookEmbed(raw,source);
+  if(!src){
+    alert('Paste a Facebook post URL in “Facebook source URL”, or paste a valid Facebook Post Plugin iframe/URL.');
+    return;
+  }
+  const h=Math.max(120,Math.min(700,Number($('#fembedh').value||170)));
+  $('#fbEmbedFrame').height=String(h);
+  $('#fbEmbedFrame').src=src;
+  $('#fbEmbedPreview').style.display='block';
+}
+$('#fz').oninput=e=>{if(feedbackEditing<0)return;const x=cfg.feedback[feedbackEditing];x.zoom=+e.target.value;$('#fzo').value=x.zoom.toFixed(2)+'×';crop($('#fimg'),x);setDirty(true)}
+function closeFeedback(){if(feedbackEditing>=0&&feedbackNewDraft)cfg.feedback.splice(feedbackEditing,1);feedbackEditing=-1;feedbackNewDraft=false;$('#feedbackDlg').classList.remove('open');renderFeedback()}
+function applyFeedback(){
+  if(feedbackEditing<0)return;const x=cfg.feedback[feedbackEditing],img=$('#fi').value.trim(),fb=$('#ff').value.trim();
+  if(img){const check=validateImageURL(img);if(!check.ok){alert(check.error);return}}
+  if(fb&&!/^https?:\/\//i.test(fb)){alert('Facebook source must be a complete http(s) URL.');return}
+  const text=$('#ft').value.trim(),rawEmbed=$('#fembed').value.trim();
+  const normalizedEmbed=normalizeFacebookEmbed(rawEmbed,fb);
+  if(!text&&!normalizedEmbed){alert('Please enter feedback text, a Facebook post URL, or a Facebook embed.');return}
+  if(rawEmbed&&!normalizedEmbed){alert('That Facebook embed could not be recognized. Use the full iframe, the plugins/post.php URL, or just the normal Facebook post URL.');return}
+  x.name=$('#fn').value.trim()||'The Overrun Closet by Blissful Kate customer';x.text=text;x.facebookUrl=fb;x.facebookEmbed=normalizedEmbed;x.embedHeight=Math.max(120,Math.min(700,Number($('#fembedh').value||170)));x.imageUrl=img;x.featured=$('#ffeatured').checked;x.visible=$('#fvisible').checked;
+  setDirty(true);feedbackEditing=-1;feedbackNewDraft=false;$('#feedbackDlg').classList.remove('open');renderFeedback()
+}
+
+
+async function saveAll() {
+  if (savingNow) return;
+
+  // Capture every form-backed editor immediately before save. This protects
+  // against browser autofill/programmatic edits that may not fire input events.
+  const beforeCapture=JSON.stringify(cfg);
+  captureHeroEditor();
+  captureBrandingEditor();
+  captureSectionCopyEditor();
+  captureAboutEditor();
+  captureContactEditor();
+  capturePeopleEditor();
+  captureCreatorAdEditor();
+  if(JSON.stringify(cfg)!==beforeCapture)setDirty(true);
+
+  if (!dirty) {
+    showSaveProgress('Nothing to save', 'Your online site is already up to date.', 100);
+    hideSaveProgress(1400);
+    return;
+  }
+
+  // If the user has edited the hero URL field but not clicked Preview, include it.
+  const typedHero = $('#hu').value.trim();
+  if (typedHero && typedHero !== cfg.hero.url) {
+    const check = validateImageURL(typedHero);
+    if (!check.ok) { alert(check.error); return; }
+    cfg.hero.url = typedHero;
+  }
+
+  const ss = $('#ss');
+  const btn = $('#saveBtn');
+  savingNow = true;
+  btn.classList.add('saving');
+  btn.textContent = 'Saving…';
+  ss.textContent = 'Saving your changes online…';
+  ss.className = 'status';
+
+  try {
+    showSaveProgress('Saving changes', 'Preparing your Hero and Gallery settings…', 20);
+    await new Promise(r => setTimeout(r, 120));
+    showSaveProgress('Saving changes', 'Sending updates securely to Cloudflare…', 48);
+
+    const r = await fetch('/api/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(cfg)
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || 'Save failed');
+
+    showSaveProgress('Verifying update', 'Checking that the latest settings are online…', 78);
+    const verify = await fetch('/api/site?ts=' + Date.now(), { cache: 'no-store' });
+    if (!verify.ok) throw new Error('Saved, but verification could not be completed. Refresh the public site to check.');
+    const live = await verify.json();
+    if (j.updatedAt && live.updatedAt && j.updatedAt !== live.updatedAt) {
+      throw new Error('Cloudflare has not returned the newest version yet. Please try Save again in a moment.');
+    }
+    const requiredSavedKeys=['hero','about','sectionCopy','creatorAd','peopleSection'];
+    const missingSavedKeys=requiredSavedKeys.filter(k=>!live[k]);
+    if(missingSavedKeys.length){
+      throw new Error('The site saved, but some settings were not returned from online storage: '+missingSavedKeys.join(', ')+'. Please try Save again.');
+    }
+
+    cfg = merge(defaults, live);
+    setDirty(false);
+    showSaveProgress('Saved online ✓', 'Your changes are live. You can refresh the public site now.', 100);
+    ss.textContent = '✓ Saved online successfully. The public site now uses these settings.';
+    ss.className = 'status good';
+    hideSaveProgress(2400);
+  } catch (err) {
+    showSaveProgress('Save failed', err.message || 'Something went wrong while saving.', 100);
+    ss.textContent = err.message || 'Save failed';
+    ss.className = 'status bad';
+    hideSaveProgress(4200);
+  } finally {
+    savingNow = false;
+    btn.classList.remove('saving');
+    btn.textContent = dirty ? 'Save online •' : 'Save online';
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  if (!dirty || savingNow) return;
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+initAdminTheme();
+renderEnvironmentBadge();
+restoreRememberedUsername();
+$('#p')?.addEventListener('keydown', (e)=>{ if(e.key==='Enter') doLogin(); });
+$('#u')?.addEventListener('keydown', (e)=>{ if(e.key==='Enter') $('#p')?.focus(); });
+start();
+</script></body></html>
